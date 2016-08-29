@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsDim" table="BMS_Dim">
+        <id name="dimId" type="int">
+            <column name="DimID" />
+            <generator class="assigned" />
+        </id>
+        <property name="dimCode" type="string">
+            <column name="DimCode" length="50" />
+        </property>
+        <property name="dimName" type="string">
+            <column name="DimName" length="50" />
+        </property>
+        <property name="isSysDefine" type="java.lang.Character">
+            <column name="IsSysDefine" length="1" />
+        </property>
+        <property name="memStruct" type="string">
+            <column name="MemStruct" length="10" />
+        </property>
+        <set name="bmsDimMembers" inverse="true">
+            <key>
+                <column name="DimID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsDimMember" />
+        </set>
+        <set name="bmsTpParamDims" inverse="true">
+            <key>
+                <column name="DimID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsTpParamDim" />
+        </set>
+        <set name="bmsGsparamDims" inverse="true">
+            <key>
+                <column name="DimID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsGsparamDim" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsRole" table="BMS_Role">
+        <id name="roleId" type="int">
+            <column name="RoleID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsRoleClass" class="com.sinosoft.bms.entity.BmsRoleClass" fetch="select">
+            <column name="RCID" />
+        </many-to-one>
+        <many-to-one name="bmsObject" class="com.sinosoft.bms.entity.BmsObject" fetch="select">
+            <column name="BgObjID" />
+        </many-to-one>
+        <property name="roleCode" type="string">
+            <column name="RoleCode" length="50" />
+        </property>
+        <property name="roleName" type="string">
+            <column name="RoleName" length="50" />
+        </property>
+        <property name="useFlag" type="string">
+            <column name="UseFlag" length="50" />
+        </property>
+        <set name="bmsUserRoles" inverse="true">
+            <key>
+                <column name="RoleID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsUserRole" />
+        </set>
+    </class>
+</hibernate-mapping>

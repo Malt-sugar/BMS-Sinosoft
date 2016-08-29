@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsUserBgObj" table="BMS_UserBgObj">
+        <composite-id name="id" class="com.sinosoft.bms.entity.BmsUserBgObjId">
+            <key-property name="userId" type="java.lang.Integer">
+                <column name="UserID" />
+            </key-property>
+            <key-property name="bgObjId" type="java.lang.Integer">
+                <column name="BgObjID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bmsUser" class="com.sinosoft.bms.entity.BmsUser" update="false" insert="false" fetch="select">
+            <column name="UserID" />
+        </many-to-one>
+        <many-to-one name="bmsObject" class="com.sinosoft.bms.entity.BmsObject" update="false" insert="false" fetch="select">
+            <column name="BgObjID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsAdjustBill" table="BMS_AdjustBill">
+        <id name="adjBillId" type="int">
+            <column name="AdjBillID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsObject" class="com.sinosoft.bms.entity.BmsObject" fetch="select">
+            <column name="BgObjID" />
+        </many-to-one>
+        <property name="adjBillCode" type="string">
+            <column name="AdjBillCode" length="50" />
+        </property>
+        <property name="adjReason" type="string">
+            <column name="AdjReason" length="1000" />
+        </property>
+        <property name="applyUser" type="java.lang.Integer">
+            <column name="ApplyUser" />
+        </property>
+        <property name="applyDate" type="string">
+            <column name="ApplyDate" length="10" />
+        </property>
+        <property name="apprUser" type="java.lang.Integer">
+            <column name="ApprUser" />
+        </property>
+        <property name="apprDate" type="string">
+            <column name="ApprDate" length="10" />
+        </property>
+        <property name="enableUser" type="java.lang.Integer">
+            <column name="EnableUser" />
+        </property>
+        <property name="enableDate" type="string">
+            <column name="EnableDate" length="10" />
+        </property>
+        <property name="adjAmt" type="big_decimal">
+            <column name="AdjAmt" precision="20" scale="4" />
+        </property>
+        <property name="apprFlag" type="java.lang.Character">
+            <column name="ApprFlag" length="1" />
+        </property>
+        <property name="enableFlag" type="java.lang.Character">
+            <column name="EnableFlag" length="1" />
+        </property>
+        <property name="holdFlag" type="java.lang.Character">
+            <column name="HoldFlag" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

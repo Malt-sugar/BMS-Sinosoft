@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:47 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsTpColDim" table="BMS_TpColDim">
+        <id name="tpColDimId" type="int">
+            <column name="TpColDimID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsTemplet" class="com.sinosoft.bms.entity.BmsTemplet" fetch="select">
+            <column name="TpID" />
+        </many-to-one>
+        <property name="colCode" type="string">
+            <column name="ColCode" length="50" />
+        </property>
+        <property name="colName" type="string">
+            <column name="ColName" length="50" />
+        </property>
+        <property name="parentCol" type="java.lang.Integer">
+            <column name="ParentCol" />
+        </property>
+        <property name="colType" type="java.lang.Integer">
+            <column name="ColType" />
+        </property>
+        <property name="formula" type="string">
+            <column name="Formula" length="1000" />
+        </property>
+        <set name="bmsSheetItems" inverse="true">
+            <key>
+                <column name="TpColDimID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsSheetItem" />
+        </set>
+    </class>
+</hibernate-mapping>

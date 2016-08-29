@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsUserRole" table="BMS_UserRole">
+        <composite-id name="id" class="com.sinosoft.bms.entity.BmsUserRoleId">
+            <key-property name="roleId" type="java.lang.Integer">
+                <column name="RoleID" />
+            </key-property>
+            <key-property name="userId" type="java.lang.Integer">
+                <column name="UserID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bmsUser" class="com.sinosoft.bms.entity.BmsUser" update="false" insert="false" fetch="select">
+            <column name="UserID" />
+        </many-to-one>
+        <many-to-one name="bmsRole" class="com.sinosoft.bms.entity.BmsRole" update="false" insert="false" fetch="select">
+            <column name="RoleID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

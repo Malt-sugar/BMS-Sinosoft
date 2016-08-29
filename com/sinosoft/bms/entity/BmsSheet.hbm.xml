@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:47 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsSheet" table="BMS_Sheet">
+        <id name="sheetId" type="int">
+            <column name="SheetID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsTpParamDim" class="com.sinosoft.bms.entity.BmsTpParamDim" fetch="select">
+            <column name="TpParamDimID" />
+        </many-to-one>
+        <many-to-one name="bmsTemplet" class="com.sinosoft.bms.entity.BmsTemplet" fetch="select">
+            <column name="TpID" />
+        </many-to-one>
+        <many-to-one name="bmsObject" class="com.sinosoft.bms.entity.BmsObject" fetch="select">
+            <column name="BgObjID" />
+        </many-to-one>
+        <property name="sheetCode" type="string">
+            <column name="SheetCode" length="100" />
+        </property>
+        <property name="sheetTitle" type="string">
+            <column name="SheetTitle" length="200" />
+        </property>
+        <property name="addUser" type="java.lang.Integer">
+            <column name="AddUser" />
+        </property>
+        <property name="addDate" type="string">
+            <column name="AddDate" length="10" />
+        </property>
+        <property name="apprUser" type="java.lang.Integer">
+            <column name="ApprUser" />
+        </property>
+        <property name="apprDate" type="string">
+            <column name="ApprDate" length="10" />
+        </property>
+        <property name="gatherUser" type="java.lang.Integer">
+            <column name="GatherUser" />
+        </property>
+        <property name="gatherDate" type="string">
+            <column name="GatherDate" length="10" />
+        </property>
+        <property name="repDate" type="string">
+            <column name="RepDate" length="10" />
+        </property>
+        <property name="apprFlag" type="java.lang.Character">
+            <column name="ApprFlag" length="1" />
+        </property>
+        <property name="gatheredFlag" type="java.lang.Character">
+            <column name="GatheredFlag" length="1" />
+        </property>
+        <property name="repFlag" type="java.lang.Character">
+            <column name="RepFlag" length="1" />
+        </property>
+        <property name="enabledFlag" type="java.lang.Character">
+            <column name="EnabledFlag" length="1" />
+        </property>
+        <property name="apprAdvice" type="string">
+            <column name="ApprAdvice" length="1000" />
+        </property>
+        <property name="isGatherSheet" type="java.lang.Character">
+            <column name="IsGatherSheet" length="1" />
+        </property>
+        <property name="colGatherMethod" type="java.lang.Character">
+            <column name="ColGatherMethod" length="1" />
+        </property>
+        <set name="bmsGsparamDims" inverse="true">
+            <key>
+                <column name="SheetID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsGsparamDim" />
+        </set>
+        <set name="bmsGsrowDims" inverse="true">
+            <key>
+                <column name="SheetID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsGsrowDim" />
+        </set>
+        <set name="bmsGschildrens" inverse="true">
+            <key>
+                <column name="SheetID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsGschildren" />
+        </set>
+        <set name="bmsSheetItems" inverse="true">
+            <key>
+                <column name="SheetID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsSheetItem" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+    <!-- 
+        <property name="hibernate.cglib.use_reflection_optimizer">true</property>
+        <property name="hibernate.connection.driver_class">com.microsoft.jdbc.sqlserver.SQLServerDriver</property>
+        <property name="hibernate.connection.password">sa</property>
+        <property name="hibernate.connection.url">jdbc:microsoft:sqlserver://sinoserver;DatabaseName=bmsdemo;SelectMethod=cursor</property>
+        <property name="hibernate.connection.username">sa</property>
+        <property name="hibernate.default_catalog">bmsdemo</property>
+        <property name="hibernate.default_schema">dbo</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.SQLServerDialect</property>
+	-->
+        <mapping resource="com/sinosoft/bms/entity/BmsPrdSch.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsTpRowDim.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsGschildren.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsUserBgObj.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsId.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsControl.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsPeriod.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsAlert.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsObjectType.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsGsparamDim.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsDimMember.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsTpParamDim.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsSheetItem.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsGsrowDim.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsTpBgObj.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsItem.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsScheme.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsUser.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsUserMenu.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsTemplet.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsItemCate.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsDim.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsUserRole.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsTempletAttach.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsRole.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsAdjustBill.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsRcmenu.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsRoleClass.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsMenu.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsAttachType.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsObject.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsSheet.hbm.xml" />
+        <mapping resource="com/sinosoft/bms/entity/BmsTpColDim.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

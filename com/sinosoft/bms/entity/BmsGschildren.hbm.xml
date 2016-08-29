@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsGschildren" table="BMS_GSChildren">
+        <composite-id name="id" class="com.sinosoft.bms.entity.BmsGschildrenId">
+            <key-property name="sheetId" type="java.lang.Integer">
+                <column name="SheetID" />
+            </key-property>
+            <key-property name="childSheetId" type="java.lang.Integer">
+                <column name="ChildSheetID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bmsSheet" class="com.sinosoft.bms.entity.BmsSheet" update="false" insert="false" fetch="select">
+            <column name="SheetID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

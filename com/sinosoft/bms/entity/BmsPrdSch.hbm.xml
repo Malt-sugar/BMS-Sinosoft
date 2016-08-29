@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsPrdSch" table="BMS_PrdSch">
+        <id name="prdSchId" type="int">
+            <column name="PrdSchID" />
+            <generator class="assigned" />
+        </id>
+        <property name="prdSchCode" type="string">
+            <column name="PrdSchCode" length="50" />
+        </property>
+        <property name="prdSchName" type="string">
+            <column name="PrdSchName" length="50" />
+        </property>
+        <property name="yearFlag" type="java.lang.Character">
+            <column name="YearFlag" length="1" />
+        </property>
+        <property name="halfYearFlag" type="java.lang.Character">
+            <column name="HalfYearFlag" length="1" />
+        </property>
+        <property name="quarterFlag" type="java.lang.Character">
+            <column name="QuarterFlag" length="1" />
+        </property>
+        <property name="monthFlag" type="java.lang.Character">
+            <column name="MonthFlag" length="1" />
+        </property>
+        <property name="adjustFlag" type="java.lang.Character">
+            <column name="AdjustFlag" length="1" />
+        </property>
+        <set name="bmsPeriods" inverse="true">
+            <key>
+                <column name="PrdSchID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsPeriod" />
+        </set>
+        <set name="bmsTemplets" inverse="true">
+            <key>
+                <column name="PrdSchID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsTemplet" />
+        </set>
+    </class>
+</hibernate-mapping>

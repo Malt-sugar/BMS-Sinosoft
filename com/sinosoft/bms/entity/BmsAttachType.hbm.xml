@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsAttachType" table="BMS_AttachType">
+        <composite-id name="id" class="com.sinosoft.bms.entity.BmsAttachTypeId">
+            <key-property name="extName" type="string">
+                <column name="ExtName" length="20" />
+            </key-property>
+            <key-property name="typeName" type="string">
+                <column name="TypeName" length="50" />
+            </key-property>
+            <key-property name="picPath" type="string">
+                <column name="PicPath" length="50" />
+            </key-property>
+        </composite-id>
+    </class>
+</hibernate-mapping>

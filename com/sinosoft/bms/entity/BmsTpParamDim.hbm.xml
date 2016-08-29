@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsTpParamDim" table="BMS_TpParamDim">
+        <id name="tpParamDimId" type="int">
+            <column name="TpParamDimID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsDim" class="com.sinosoft.bms.entity.BmsDim" fetch="select">
+            <column name="DimID" />
+        </many-to-one>
+        <many-to-one name="bmsTemplet" class="com.sinosoft.bms.entity.BmsTemplet" fetch="select">
+            <column name="TpID" />
+        </many-to-one>
+        <many-to-one name="bmsDimMember" class="com.sinosoft.bms.entity.BmsDimMember" fetch="select">
+            <column name="DimMemID" />
+        </many-to-one>
+        <set name="bmsSheets" inverse="true">
+            <key>
+                <column name="TpParamDimID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsSheet" />
+        </set>
+    </class>
+</hibernate-mapping>

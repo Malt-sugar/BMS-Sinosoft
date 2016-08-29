@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsControl" table="BMS_Control">
+        <composite-id name="id" class="com.sinosoft.bms.entity.BmsControlId">
+            <key-property name="itemId" type="java.lang.Integer">
+                <column name="ItemID" />
+            </key-property>
+            <key-property name="bgSchId" type="java.lang.Integer">
+                <column name="BgSchID" />
+            </key-property>
+            <key-property name="controlFlag" type="java.lang.Character">
+                <column name="ControlFlag" length="1" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bmsItem" class="com.sinosoft.bms.entity.BmsItem" update="false" insert="false" fetch="select">
+            <column name="ItemID" />
+        </many-to-one>
+        <many-to-one name="bmsScheme" class="com.sinosoft.bms.entity.BmsScheme" update="false" insert="false" fetch="select">
+            <column name="BgSchID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

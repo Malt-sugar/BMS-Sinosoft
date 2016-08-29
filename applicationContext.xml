@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+<!-- 
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="resourceRef">
+			<value>false</value>
+		</property>
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">
+					com.ibm.websphere.naming.WsnInitialContextFactory
+				</prop>
+			</props>
+		</property>
+		<property name="jndiName">
+			<value>BMSDataSource</value>
+		</property>
+	</bean>
+	 -->
+<!-- 
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName">
+			<value>com.microsoft.jdbc.sqlserver.SQLServerDriver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=bmsdemo;sendStringParametersAsUnicode=false</value>
+		</property>
+		<property name="username">
+			<value>sa</value>
+		</property>
+		<property name="password">
+			<value>sun</value>
+		</property>
+	</bean>
+ -->	
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName">
+			<value>net.sourceforge.jtds.jdbc.Driver</value>
+		</property>
+		<property name="url">
+			<value>jdbc:jtds:sqlserver://localhost:1433/bmsdemo;tds=8.0;lastupdatecount=true</value>
+		</property>
+		<property name="username">
+			<value>sa</value>
+		</property>
+		<property name="password">
+			<value>sun</value>
+		</property>
+	</bean>
+	 
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+		<property name="configLocation">
+			<value>bms.hibernate.cfg.xml</value>
+		</property>
+	</bean>
+	
+	<bean id="dao" class="com.sinosoft.bms.framework.BaseDAO">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+		<property name="dataSource">
+			<ref local="dataSource" />
+		</property>
+	</bean>
+	
+	<bean id="Login" class="com.sinosoft.bms.service.main.LoginImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="CommonService" class="com.sinosoft.bms.service.main.CommonServiceImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="User" class="com.sinosoft.bms.service.bd.UserImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="Menu" class="com.sinosoft.bms.service.bd.MenuImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="PrdSch" class="com.sinosoft.bms.service.bd.PrdSchImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="ObjectType" class="com.sinosoft.bms.service.bd.BmsObjectTypeImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="Dim" class="com.sinosoft.bms.service.bd.DimImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="BgObj" class="com.sinosoft.bms.service.bd.BgObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="RoleObj" class="com.sinosoft.bms.service.bd.RoleObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+
+	<bean id="RoleClassObj" class="com.sinosoft.bms.service.bd.RoleClassObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="BmsItemObj" class="com.sinosoft.bms.service.bd.BmsItemObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+
+	<bean id="BmsUserObj" class="com.sinosoft.bms.service.bd.BmsUserObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="UserRoleObj" class="com.sinosoft.bms.service.bd.UserRoleObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="Templete" class="com.sinosoft.bms.service.budgets.TempleteImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+	
+	<bean id="BmsSchemeObj" class="com.sinosoft.bms.service.bd.BmsSchemeObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>
+
+	<bean id="BmsSheetObj" class="com.sinosoft.bms.service.bd.BmsSheetObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>	
+	
+	<bean id="BmsAdjustObj" class="com.sinosoft.bms.service.bd.BmsAdjustObjImpl">
+		<constructor-arg ref="dao"></constructor-arg>
+	</bean>	
+
+	<bean id="UserMenuObj" class="com.sinosoft.bms.service.bd.UserMenuObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>	
+	
+	<bean id="AnalyseQuery" class="com.sinosoft.bms.service.budgets.AnalyseQueryImpl">
+		<constructor-arg ref="dao"/>
+	</bean>	
+	
+	<bean id="BmsSheetItemObj" class="com.sinosoft.bms.service.bd.BmsSheetItemObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>	
+	
+	<bean id="BmsAlertObj" class="com.sinosoft.bms.service.bd.BmsAlertObjImpl">
+		<constructor-arg ref="dao"/>
+	</bean>	
+	
+	<bean id="txAttributes" class="org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource">
+		<property name="properties">
+			<props>
+				<prop key="insert">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="update">PROPAGATION_REQUIRED,-Exception</prop>
+				<prop key="delete">PROPAGATION_REQUIRED,-Exception</prop>				
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	
+	<!--  
+	<bean id="PrdSchProxy" class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+		<property name="transactionManager">
+			<ref bean="transactionManager"></ref>
+		</property>
+		
+		<property name="target">
+			<ref bean="PrdSch"></ref>
+		</property>
+		
+		<property name="transactionAttributes">
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+			</props>
+		</property>
+	</bean>
+	-->
+	
+	<bean id="txInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<property name="transactionManager">
+			<ref local="transactionManager" />
+		</property>
+ 
+		<property name="transactionAttributeSource">
+			<ref bean="txAttributes" />
+		</property>
+
+<!--  
+		<property name="transactionAttributes">
+			<props>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="query*">PROPAGATION_REQUIRED</prop>
+			</props>
+		</property> 
+--> 
+	</bean>
+	 
+	
+	
+	<bean id="autoProxyCreator" class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="interceptorNames">
+			<list>
+				<value>txInterceptor</value>
+			</list>
+		</property>
+		<property name="beanNames">
+			<list>
+			  <value>User</value>
+			  <value>Login</value>
+			  <value>Menu</value>
+			  <value>PrdSch</value>
+			  <value>ObjectType</value>
+			  <value>Dim</value>
+			  <value>BgObj</value>
+			  <value>RoleObj</value>
+			  <value>RoleClassObj</value>
+			  <value>BmsItemObj</value>
+			  <value>BmsUserObj</value>
+			  <value>UserRoleObj</value>
+			  <value>Templete</value>
+			  <value>BmsSchemeObj</value>
+			  <value>BmsSheetObj</value>
+			  <value>BmsAdjustObj</value>
+			  <value>UserMenuObj</value>
+			  <value>BmsSheetItemObj</value>
+			</list>
+		</property>
+	</bean>
+	 
+
+	
+</beans>

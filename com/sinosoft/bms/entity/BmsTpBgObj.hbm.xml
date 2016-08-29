@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsTpBgObj" table="BMS_TpBgObj">
+        <id name="tpBgObjId" type="int">
+            <column name="TpBgObjID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsTemplet" class="com.sinosoft.bms.entity.BmsTemplet" fetch="select">
+            <column name="TpID" />
+        </many-to-one>
+        <many-to-one name="bmsObject" class="com.sinosoft.bms.entity.BmsObject" fetch="select">
+            <column name="BgObjID" />
+        </many-to-one>
+        <property name="leafFlag" type="java.lang.Character">
+            <column name="LeafFlag" length="1" />
+        </property>
+        <set name="bmsSheetItems" inverse="true">
+            <key>
+                <column name="TpBgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsSheetItem" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:47 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsObject" table="BMS_Object">
+        <id name="bgObjId" type="int">
+            <column name="BgObjID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsObjectType" class="com.sinosoft.bms.entity.BmsObjectType" fetch="select">
+            <column name="BgObjTypeID" />
+        </many-to-one>
+        <property name="bgObjCode" type="string">
+            <column name="BgObjCode" length="50" />
+        </property>
+        <property name="bgObjName" type="string">
+            <column name="BgObjName" length="50" />
+        </property>
+        <property name="parentBgObj" type="java.lang.Integer">
+            <column name="ParentBgObj" />
+        </property>
+        <property name="operSysCode" type="string">
+            <column name="OperSysCode" length="50" />
+        </property>
+        <property name="useFlag" type="java.lang.Character">
+            <column name="UseFlag" length="1" />
+        </property>
+        <set name="bmsUsers" inverse="true">
+            <key>
+                <column name="BgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsUser" />
+        </set>
+        <set name="bmsAdjustBills" inverse="true">
+            <key>
+                <column name="BgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsAdjustBill" />
+        </set>
+        <set name="bmsRoles" inverse="true">
+            <key>
+                <column name="BgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsRole" />
+        </set>
+        <set name="bmsSheets" inverse="true">
+            <key>
+                <column name="BgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsSheet" />
+        </set>
+        <set name="bmsTpBgObjs" inverse="true">
+            <key>
+                <column name="BgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsTpBgObj" />
+        </set>
+        <set name="bmsUserBgObjs" inverse="true">
+            <key>
+                <column name="BgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsUserBgObj" />
+        </set>
+        <set name="bmsSchemes" inverse="true">
+            <key>
+                <column name="BgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsScheme" />
+        </set>
+        <set name="bmsSheetItems" inverse="true">
+            <key>
+                <column name="BgObjID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsSheetItem" />
+        </set>
+    </class>
+</hibernate-mapping>

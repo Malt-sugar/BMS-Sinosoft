@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsPeriod" table="BMS_Period">
+        <composite-id name="id" class="com.sinosoft.bms.entity.BmsPeriodId">
+            <key-property name="bgPrdCode" type="string">
+                <column name="BgPrdCode" length="50" />
+            </key-property>
+            <key-property name="bgPrdName" type="string">
+                <column name="BgPrdName" length="50" />
+            </key-property>
+            <key-property name="prdSchId" type="java.lang.Integer">
+                <column name="PrdSchID" />
+            </key-property>
+            <key-property name="prdType" type="java.lang.Character">
+                <column name="PrdType" length="1" />
+            </key-property>
+            <key-property name="prdYear" type="java.lang.Integer">
+                <column name="PrdYear" />
+            </key-property>
+            <key-property name="startMonth" type="java.lang.Integer">
+                <column name="StartMonth" />
+            </key-property>
+            <key-property name="endMonth" type="java.lang.Integer">
+                <column name="EndMonth" />
+            </key-property>
+            <key-property name="startDate" type="string">
+                <column name="StartDate" length="10" />
+            </key-property>
+            <key-property name="endDate" type="string">
+                <column name="EndDate" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bmsPrdSch" class="com.sinosoft.bms.entity.BmsPrdSch" update="false" insert="false" fetch="select">
+            <column name="PrdSchID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

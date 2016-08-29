@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsObjectType" table="BMS_ObjectType">
+        <id name="bgObjTypeId" type="int">
+            <column name="BgObjTypeID" />
+            <generator class="assigned" />
+        </id>
+        <property name="bjObjTypeCode" type="string">
+            <column name="BjObjTypeCode" length="50" />
+        </property>
+        <property name="bjObjTypeName" type="string">
+            <column name="BjObjTypeName" length="50" />
+        </property>
+        <set name="bmsObjects" inverse="true">
+            <key>
+                <column name="BgObjTypeID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsObject" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsUser" table="BMS_User">
+        <id name="userId" type="int">
+            <column name="UserID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsObject" class="com.sinosoft.bms.entity.BmsObject" fetch="select">
+            <column name="BgObjID" />
+        </many-to-one>
+        <property name="userCode" type="string">
+            <column name="UserCode" length="50" />
+        </property>
+        <property name="userName" type="string">
+            <column name="UserName" length="50" />
+        </property>
+        <property name="passWord" type="string">
+            <column name="PassWord" length="50" />
+        </property>
+        <property name="useFlag" type="java.lang.Character">
+            <column name="UseFlag" length="1" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMail" length="100" />
+        </property>
+        <property name="phone" type="string">
+            <column name="Phone" length="50" />
+        </property>
+        <set name="bmsUserRoles" inverse="true">
+            <key>
+                <column name="UserID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsUserRole" />
+        </set>
+        <set name="bmsUserMenus" inverse="true">
+            <key>
+                <column name="UserID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsUserMenu" />
+        </set>
+        <set name="bmsUserBgObjs" inverse="true">
+            <key>
+                <column name="UserID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsUserBgObj" />
+        </set>
+    </class>
+</hibernate-mapping>

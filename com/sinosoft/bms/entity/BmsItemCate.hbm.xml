@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsItemCate" table="BMS_ItemCate">
+        <id name="itemCateId" type="int">
+            <column name="ItemCateID" />
+            <generator class="assigned" />
+        </id>
+        <property name="itemCateCode" type="string">
+            <column name="ItemCateCode" length="50" />
+        </property>
+        <property name="itemCateName" type="string">
+            <column name="ItemCateName" length="50" />
+        </property>
+        <set name="bmsItems" inverse="true">
+            <key>
+                <column name="ItemCateID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsItem" />
+        </set>
+    </class>
+</hibernate-mapping>

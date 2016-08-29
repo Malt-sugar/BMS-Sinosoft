@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsGsparamDim" table="BMS_GSParamDim">
+        <composite-id name="id" class="com.sinosoft.bms.entity.BmsGsparamDimId">
+            <key-property name="sheetId" type="java.lang.Integer">
+                <column name="SheetID" />
+            </key-property>
+            <key-property name="dimId" type="java.lang.Integer">
+                <column name="DimID" />
+            </key-property>
+            <key-property name="dimMemId" type="java.lang.Integer">
+                <column name="DimMemID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="bmsDim" class="com.sinosoft.bms.entity.BmsDim" update="false" insert="false" fetch="select">
+            <column name="DimID" />
+        </many-to-one>
+        <many-to-one name="bmsSheet" class="com.sinosoft.bms.entity.BmsSheet" update="false" insert="false" fetch="select">
+            <column name="SheetID" />
+        </many-to-one>
+        <many-to-one name="bmsDimMember" class="com.sinosoft.bms.entity.BmsDimMember" update="false" insert="false" fetch="select">
+            <column name="DimMemID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

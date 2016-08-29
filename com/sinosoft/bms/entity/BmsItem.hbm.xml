@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsItem" table="BMS_Item">
+        <id name="itemId" type="int">
+            <column name="ItemID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsItemCate" class="com.sinosoft.bms.entity.BmsItemCate" fetch="select">
+            <column name="ItemCateID" />
+        </many-to-one>
+        <property name="itemCode" type="string">
+            <column name="ItemCode" length="50" />
+        </property>
+        <property name="itemName" type="string">
+            <column name="ItemName" length="50" />
+        </property>
+        <property name="itemType" type="string">
+            <column name="ItemType" length="10" />
+        </property>
+        <property name="parentItem" type="java.lang.Integer">
+            <column name="ParentItem" />
+        </property>
+        <property name="subjCode" type="string">
+            <column name="SubjCode" length="50" />
+        </property>
+        <property name="formula" type="string">
+            <column name="Formula" length="1000" />
+        </property>
+        <set name="bmsTpRowDims" inverse="true">
+            <key>
+                <column name="ItemID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsTpRowDim" />
+        </set>
+        <set name="bmsSheetItems" inverse="true">
+            <key>
+                <column name="ItemID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsSheetItem" />
+        </set>
+        <set name="bmsGsrowDims" inverse="true">
+            <key>
+                <column name="ItemID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsGsrowDim" />
+        </set>
+        <set name="bmsControls" inverse="true">
+            <key>
+                <column name="ItemID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsControl" />
+        </set>
+        <set name="bmsAlerts" inverse="true">
+            <key>
+                <column name="ItemID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsAlert" />
+        </set>
+    </class>
+</hibernate-mapping>

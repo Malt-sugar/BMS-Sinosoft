@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsTpRowDim" table="BMS_TpRowDim">
+        <id name="tpRowDimId" type="int">
+            <column name="TpRowDimID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsItem" class="com.sinosoft.bms.entity.BmsItem" fetch="select">
+            <column name="ItemID" />
+        </many-to-one>
+        <many-to-one name="bmsTemplet" class="com.sinosoft.bms.entity.BmsTemplet" fetch="select">
+            <column name="TpID" />
+        </many-to-one>
+        <set name="bmsSheetItems" inverse="true">
+            <key>
+                <column name="TpRowDimID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsSheetItem" />
+        </set>
+    </class>
+</hibernate-mapping>

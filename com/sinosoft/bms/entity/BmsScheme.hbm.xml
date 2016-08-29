@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsScheme" table="BMS_Scheme">
+        <id name="bgSchId" type="int">
+            <column name="BgSchID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsObject" class="com.sinosoft.bms.entity.BmsObject" fetch="select">
+            <column name="BgObjID" />
+        </many-to-one>
+        <property name="bgSchCode" type="string">
+            <column name="BgSchCode" length="50" />
+        </property>
+        <property name="bgSchName" type="string">
+            <column name="BgSchName" length="50" />
+        </property>
+        <property name="startDate" type="string">
+            <column name="StartDate" length="10" />
+        </property>
+        <property name="endDat" type="string">
+            <column name="EndDat" length="10" />
+        </property>
+        <property name="useFlag" type="java.lang.Character">
+            <column name="UseFlag" length="1" />
+        </property>
+        <set name="bmsControls" inverse="true">
+            <key>
+                <column name="BgSchID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsControl" />
+        </set>
+        <set name="bmsAlerts" inverse="true">
+            <key>
+                <column name="BgSchID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsAlert" />
+        </set>
+        <set name="bmsTemplets" inverse="true">
+            <key>
+                <column name="BgSchID" />
+            </key>
+            <one-to-many class="com.sinosoft.bms.entity.BmsTemplet" />
+        </set>
+    </class>
+</hibernate-mapping>

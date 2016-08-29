@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2009-5-19 11:36:46 by Hibernate Tools 3.1.0.beta4 -->
+<hibernate-mapping>
+    <class name="com.sinosoft.bms.entity.BmsSheetItem" table="BMS_SheetItem">
+        <id name="sheetItemId" type="int">
+            <column name="SheetItemID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="bmsTpBgObj" class="com.sinosoft.bms.entity.BmsTpBgObj" fetch="select">
+            <column name="TpBgObjID" />
+        </many-to-one>
+        <many-to-one name="bmsItem" class="com.sinosoft.bms.entity.BmsItem" fetch="select">
+            <column name="ItemID" />
+        </many-to-one>
+        <many-to-one name="bmsTemplet" class="com.sinosoft.bms.entity.BmsTemplet" fetch="select">
+            <column name="TpID" />
+        </many-to-one>
+        <many-to-one name="bmsTpColDim" class="com.sinosoft.bms.entity.BmsTpColDim" fetch="select">
+            <column name="TpColDimID" />
+        </many-to-one>
+        <many-to-one name="bmsSheet" class="com.sinosoft.bms.entity.BmsSheet" fetch="select">
+            <column name="SheetID" />
+        </many-to-one>
+        <many-to-one name="bmsObject" class="com.sinosoft.bms.entity.BmsObject" fetch="select">
+            <column name="BgObjID" />
+        </many-to-one>
+        <many-to-one name="bmsTpRowDim" class="com.sinosoft.bms.entity.BmsTpRowDim" fetch="select">
+            <column name="TpRowDimID" />
+        </many-to-one>
+        <property name="itemVal" type="big_decimal">
+            <column name="ItemVal" precision="20" scale="4" />
+        </property>
+        <property name="planValFlag" type="java.lang.Character">
+            <column name="PlanValFlag" length="1" />
+        </property>
+        <property name="byFormulaFlag" type="java.lang.Character">
+            <column name="ByFormulaFlag" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>
